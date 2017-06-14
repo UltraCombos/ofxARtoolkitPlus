@@ -1,0 +1,10 @@
+*/obj
+*/bin/*
+*!/bin/data
+*/*.sdf
+*/.vs
+*/*.db
+*/*.opendb
+*/bin/data/print_screen/*
+!/src
+*.pdb
