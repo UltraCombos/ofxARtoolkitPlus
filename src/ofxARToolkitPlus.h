@@ -3,11 +3,11 @@
 #include "ofMain.h"
 #include <ar.h>
 
+#include "ARToolKitPlus/TrackerMultiMarker.h"
+
 // Scale value for the border
 // Based on the type of marker
 #define BORDER_SCALE 1.25
-
-
 
 class ofxARToolkitPlus  {
 
@@ -15,7 +15,7 @@ class ofxARToolkitPlus  {
 
 	ofxARToolkitPlus();
 	~ofxARToolkitPlus();
-	
+
 	///////////////////////////////////////////
 	// SETUP
 	///////////////////////////////////////////
@@ -147,7 +147,7 @@ class ofxARToolkitPlus  {
 
 
 protected:
-	
+	shared_ptr<ARToolKitPlus::TrackerMultiMarker> tracker;
 	/*
 	 * Homography Functions adapted from:
 	 * http://www.openframeworks.cc/forum/viewtopic.php?p=22611

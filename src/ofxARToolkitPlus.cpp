@@ -1,10 +1,8 @@
 
 #include "ofxARToolkitPlus.h"
 
-#include "ARToolKitPlus/TrackerMultiMarker.h"
 
-ARToolKitPlus::TrackerMultiMarker *tracker;
-ARToolKitPlus::ARMultiMarkerInfoT *multiMarker;
+ARToolKitPlus::ARMultiMarkerInfoT * multiMarker;
 
 //class MyLogger : public ARToolKitPlus::Logger
 //{
@@ -53,7 +51,7 @@ void ofxARToolkitPlus::setup(int w, int h, string camParamFile, string multiFile
     //  - works with luminance (gray) images
     //  - can load a maximum of "maxLoadPatterns" non-binary pattern
     //  - can detect a maximum of "maxImagePatterns" patterns in one image
-    tracker = new ARToolKitPlus::TrackerMultiMarker (width, height, maxImagePatterns, pattWidth, pattHeight, pattSamples, maxLoadPatterns);
+    tracker = make_shared<ARToolKitPlus::TrackerMultiMarker>(width, height, maxImagePatterns, pattWidth, pattHeight, pattSamples, maxLoadPatterns);
 //	const char* description = tracker->getDescription();
 //	printf("ARToolKitPlus compile-time information:\n%s\n\n", description);
 	
@@ -72,7 +70,8 @@ void ofxARToolkitPlus::setup(int w, int h, string camParamFile, string multiFile
 						1.0f, 1000.0f) )	{
 
 		printf("ERROR: init() failed\n");
-		delete tracker;
+		tracker = nullptr;
+		//delete tracker;
 	
 		return;
 	}
